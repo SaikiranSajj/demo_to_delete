@@ -1,0 +1,170 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" 
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
+                             https://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>Api_testing</groupId>
+  <artifactId>Cucumber</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+
+  <!-- Allure results path + Java version -->
+  <properties>
+    <allure.results.directory>target/allure-results</allure.results.directory>
+    <maven.compiler.source>17</maven.compiler.source>
+    <maven.compiler.target>17</maven.compiler.target>
+  </properties>
+
+  <dependencies>
+
+    <!-- Cucumber core: used to write step definitions and execute feature files -->
+    <dependency>
+      <groupId>io.cucumber</groupId>
+      <artifactId>cucumber-java</artifactId>
+      <version>7.13.0</version>
+    </dependency>
+
+    <!-- Cucumber JUnit 5 engine: connects Cucumber with JUnit platform -->
+    <dependency>
+      <groupId>io.cucumber</groupId>
+      <artifactId>cucumber-junit-platform-engine</artifactId>
+      <version>7.13.0</version>
+      <scope>test</scope>
+    </dependency>
+
+    <!-- JUnit 5: test execution framework -->
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter</artifactId>
+      <version>5.9.3</version>
+      <scope>test</scope>
+    </dependency>
+
+    <!-- JUnit Platform Suite: used to create runner class for Cucumber -->
+    <dependency>
+      <groupId>org.junit.platform</groupId>
+      <artifactId>junit-platform-suite</artifactId>
+      <version>1.9.3</version>
+      <scope>test</scope>
+    </dependency>
+
+    <!-- Allure integration: generates Allure report data from Cucumber execution -->
+    <dependency>
+      <groupId>io.qameta.allure</groupId>
+      <artifactId>allure-cucumber7-jvm</artifactId>
+      <version>2.25.0</version>
+    </dependency>
+
+    <!-- AspectJ: enables Allure to capture steps, logs, attachments using AOP -->
+    <dependency>
+      <groupId>org.aspectj</groupId>
+      <artifactId>aspectjweaver</artifactId>
+      <version>1.9.21</version>
+    </dependency>
+
+    <!-- Rest Assured: used for API testing (request/response validation) -->
+    <dependency>
+      <groupId>io.rest-assured</groupId>
+      <artifactId>rest-assured</artifactId>
+      <version>5.5.7</version>
+      <scope>test</scope>
+    </dependency>
+
+    <!-- Jackson: used for JSON parsing and data binding -->
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-databind</artifactId>
+      <version>2.21.1</version>
+    </dependency>
+
+    <!-- Groovy: required internally by Rest Assured -->
+    <dependency>
+      <groupId>org.apache.groovy</groupId>
+      <artifactId>groovy</artifactId>
+      <version>4.0.21</version>
+    </dependency>
+
+  </dependencies>
+
+  <build>
+    <plugins>
+
+      <!-- Maven Surefire Plugin: runs test cases -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>3.2.5</version>
+        <configuration>
+
+          <!-- Only run Runner classes -->
+          <includes>
+            <include>**/*Runner.java</include>
+          </includes>
+
+          <!-- Activates AspectJ for Allure reporting -->
+          <argLine>
+ -javaagent:"C:\Users\saiki\.m2\repository\org\aspectj\aspectjweaver\1.9.21\aspectjweaver-1.9.21.jar"
+</argLine>
+<systemPropertyVariables>
+      <allure.results.directory>${project.build.directory}/allure-results</allure.results.directory>
+    </systemPropertyVariables>
+          <!-- Prevent build failure if tests fail -->
+          <testFailureIgnore>true</testFailureIgnore>
+
+        </configuration>
+      </plugin>
+
+  
+    <plugin>
+      <groupId>org.apache.maven.plugins</groupId>
+      <artifactId>maven-compiler-plugin</artifactId>
+      <version>3.13.0</version>
+      <configuration>
+        <release>17</release>
+      </configuration>
+    </plugin>
+  
+      <!-- Cucumber HTML Reporting Plugin: generates HTML report from JSON -->
+      <plugin>
+        <groupId>net.masterthought</groupId>
+        <artifactId>maven-cucumber-reporting</artifactId>
+        <version>5.7.0</version>
+        <executions>
+          <execution>
+            <id>execution</id>
+            <phase>verify</phase>
+            <goals>
+              <goal>generate</goal>
+            </goals>
+            <configuration>
+
+              <!-- Project name shown in report -->
+              <projectName>Cucumber Project</projectName>
+
+              <!-- Output HTML report location -->
+              <outputDirectory>${project.build.directory}/cucumber-report</outputDirectory>
+
+              <!-- Input JSON location (generated during test execution) -->
+              <inputDirectory>${project.build.directory}</inputDirectory>
+
+              <!-- JSON file pattern -->
+              <jsonFiles>
+    <param>target/cucumber.json</param>
+</jsonFiles>
+
+              <!-- Report settings -->
+              
+              <mergeFeaturesById>false</mergeFeaturesById>
+              <mergeFeaturesWithRetest>false</mergeFeaturesWithRetest>
+              <checkBuildResult>false</checkBuildResult>
+
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+
+    </plugins>
+  </build>
+
+</project>
