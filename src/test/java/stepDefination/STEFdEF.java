@@ -44,6 +44,8 @@ public class STEFdEF extends utils {
 	@When("user calls {string} with {string} HTTP request")
 	public void user_calls_with_post_http_request(String resource, String method) {
 		Apiresources obj = Apiresources.valueOf(resource);
+		 
+		
 		System.out.println(obj.getresource());
 
 		resSpec1 = new ResponseSpecBuilder().expectStatusCode(200).expectContentType(ContentType.JSON).build();

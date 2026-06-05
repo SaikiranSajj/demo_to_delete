@@ -1,5 +1,5 @@
 Request method:	POST
-Request URI:	https://rahulshettyacademy.com/maps/api/place/delete/json?key=qaclick123
+Request URI:	https://rahulshettyacademy.com/maps/api/place/add/json?key=qaclick123
 Proxy:			<none>
 Request params:	<none>
 Query params:	key=qaclick123
@@ -10,16 +10,57 @@ Headers:		Accept=*/*
 Cookies:		<none>
 Multiparts:		<none>
 Body:
-{\"place_id\":\"null\"}
+{"accuracy":50,"name":"sai","phone_number":"(+91) 983 893 3937","address":"wakad","types":["shoe park","shop"],"website":"https://rahulshettyacademy.com","location":{"lat":-38.383494,"lng":33.427362},"language":"hindi"}
 HTTP/1.1 200 OK
-Date: Thu, 02 Apr 2026 22:35:05 GMT
+Date: Fri, 05 Jun 2026 14:36:31 GMT
 Server: Apache/2.4.52 (Ubuntu)
 Strict-Transport-Security: max-age=604800; includeSubDomains
 Access-Control-Allow-Origin: *
 Access-Control-Allow-Methods: POST
 Access-Control-Max-Age: 3600
 Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With
-Content-Length: 0
+Content-Length: 194
 Keep-Alive: timeout=5, max=100
 Connection: Keep-Alive
-Content-Type: application/json; charset=UTF-8
+Content-Type: application/json;charset=UTF-8
+
+{
+    "status": "OK",
+    "place_id": "af4fc4d6febf186aa1f1059b19081540",
+    "scope": "APP",
+    "reference": "55c84fba813a469459fc23f78e7f730355c84fba813a469459fc23f78e7f7303",
+    "id": "55c84fba813a469459fc23f78e7f7303"
+}
+Request method:	POST
+Request URI:	https://rahulshettyacademy.com/maps/api/place/add/json?key=qaclick123
+Proxy:			<none>
+Request params:	<none>
+Query params:	key=qaclick123
+Form params:	<none>
+Path params:	<none>
+Headers:		Accept=*/*
+				Content-Type=text/plain; charset=ISO-8859-1
+Cookies:		<none>
+Multiparts:		<none>
+Body:
+{"accuracy":50,"name":"kiran","phone_number":"(+91) 983 893 3937","address":"aundh","types":["shoe park","shop"],"website":"https://rahulshettyacademy.com","location":{"lat":-38.383494,"lng":33.427362},"language":"English"}
+HTTP/1.1 200 OK
+Date: Fri, 05 Jun 2026 14:36:38 GMT
+Server: Apache/2.4.52 (Ubuntu)
+Strict-Transport-Security: max-age=604800; includeSubDomains
+Access-Control-Allow-Origin: *
+Access-Control-Allow-Methods: POST
+Access-Control-Max-Age: 3600
+Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With
+Content-Length: 194
+Keep-Alive: timeout=5, max=100
+Connection: Keep-Alive
+Content-Type: application/json;charset=UTF-8
+
+{
+    "status": "OK",
+    "place_id": "e343f3364cad07b36e92315c7ed02f70",
+    "scope": "APP",
+    "reference": "102fc70390d92069b8bcd2d0a72b093b102fc70390d92069b8bcd2d0a72b093b",
+    "id": "102fc70390d92069b8bcd2d0a72b093b"
+}

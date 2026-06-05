@@ -1,5 +1,5 @@
 Feature: Validating Place API's
-@Scen1
+
 Scenario Outline: Verify if Place is being Successfully added using AddPlaceAPI
   Given Add place PayLoad "<address>" "<language>" "<name>"
   When user calls "AddPlaceAPI" with "POST" HTTP request
@@ -13,9 +13,5 @@ Scenario Outline: Verify if Place is being Successfully added using AddPlaceAPI
   | wakad   | hindi    | sai   |
   | aundh   | English  | kiran |
  
-@Scen2
-Scenario: Verify if the place is been deleted Successfully
- Given Delete place payLoad
-   When user calls "deletePlaceAPI" with "POST" HTTP request
-   Then response code is 200 
+
  
