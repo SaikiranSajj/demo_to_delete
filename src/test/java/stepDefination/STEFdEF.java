@@ -28,7 +28,7 @@ public class STEFdEF extends utils {
 	Response post_used;
 	 static String place_id1;
 	JsonPath jd;
-	JsonPath jd3;
+	JsonPath jd5;
 	  static pojo_resource obj2;
 	@Given("Add place PayLoad {string} {string} {string}")
 	public void add_place_pay_load(String address, String language, String name) throws IOException {
