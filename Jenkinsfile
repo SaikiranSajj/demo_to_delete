@@ -11,12 +11,21 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building project...'
+                sh 'mvn clean install'
             }
         }
 
         stage('Test') {
             steps {
                 echo 'Running tests...'
+                sh 'mvn test'
+            }
+        }
+
+        stage('Verify') {
+            steps {
+                echo 'Running Maven Verify...'
+                sh 'mvn verify'
             }
         }
     }
@@ -27,6 +36,12 @@ pipeline {
                 includeProperties: false,
                 jdk: '',
                 results: [[path: 'allure-results']]
+            ])
+            
+            publishHTML([
+                reportDir: 'target/cucumber-html-report',
+                reportFiles: 'index.html',
+                reportName: 'Cucumber HTML Report'
             ])
         }
     }
