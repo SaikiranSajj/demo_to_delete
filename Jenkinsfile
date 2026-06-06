@@ -19,7 +19,9 @@ pipeline {
                 echo 'Running tests...'
             }
         }
-        post {
+    }
+
+    post {
         always {
             allure([
                 includeProperties: false,
@@ -27,6 +29,5 @@ pipeline {
                 results: [[path: 'allure-results']]
             ])
         }
-    }
     }
 }
