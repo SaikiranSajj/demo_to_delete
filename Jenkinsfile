@@ -19,5 +19,14 @@ pipeline {
                 echo 'Running tests...'
             }
         }
+        post {
+        always {
+            allure([
+                includeProperties: false,
+                jdk: '',
+                results: [[path: 'allure-results']]
+            ])
+        }
+    }
     }
 }
