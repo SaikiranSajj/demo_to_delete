@@ -11,21 +11,21 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building project...'
-                sh 'mvn clean install'
+                bat 'mvn clean install'
             }
         }
 
         stage('Test') {
             steps {
                 echo 'Running tests...'
-                sh 'mvn test'
+                bat 'mvn test'
             }
         }
 
         stage('Verify') {
             steps {
                 echo 'Running Maven Verify...'
-                sh 'mvn verify'
+                bat 'mvn verify'
             }
         }
     }
